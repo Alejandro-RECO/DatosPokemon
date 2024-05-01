@@ -1,0 +1,71 @@
+
+#bacgroundContainer{
+  position: sticky;
+  top: 0;
+  max-height: 650px;
+  border-radius: 17% 17% 25% 25% / 16% 18% 0% 0%;
+  padding: 10px 20px;
+  width: calc(100% - 40px);
+  position: relative;
+  height: 70%;
+  margin-top: 10px;
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.75);
+
+  #data{
+    padding: 0 40px;
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      font-size: medium;
+      font-weight: bolder;
+      h3{
+        font-size: 2.8rem;
+        font-weight: bold;
+        color: #fff;
+        
+
+      }
+
+      .type-pokemon{
+        padding: 5px 10px;
+        border-radius: 1rem;
+        background-color: #ffffff1b;
+      }
+    }
+  }
+  #image{
+    max-height: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+      height: 220px;
+      padding: 0;
+    }
+  }
+}
+#predetermined{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+  text-transform: uppercase;
+  font-size: large;
+
+  img{
+    position: absolute;
+    margin: 0 !important;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    top: 10%;
+    right: 5%;
+    filter: drop-shadow(
+      0 0 10px rgba(0, 0, 0, 0.444)
+    );
+  }
+}

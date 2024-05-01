@@ -1,0 +1,17 @@
+
+<app-form></app-form>
+<section id="container">
+  <div id="containerFirst">
+    <div>
+      <app-search (searchPokemon)="recivedSearchParams($event)"></app-search>
+      <app-backhround [pokemon]="pokemonSelected | async"></app-backhround>
+    </div>
+  </div>
+  <div id="containerCards">
+    <app-cards
+      *ngFor="let pokemon of pokemons | async"
+      [pokemon]="pokemon"
+      (eventIdPokemon)="receiveIdPokemon($event)"
+    ></app-cards>
+  </div>
+</section>

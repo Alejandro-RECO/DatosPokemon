@@ -1,0 +1,22 @@
+<div  id="bacgroundContainer" [ngStyle]="{ 'background-color': $color }">
+  <div *ngIf="!pokemon" id="predetermined">
+    <h2 *ngIf="!pokemon">!Bienvenidos¡</h2>
+    <img *ngIf="!pokemon" src="../../../assets/img/Pokebola-pokeball-png-0.png" alt="Predeterminada">
+  </div>
+  <div *ngIf="pokemon" id="data">
+    <div>
+      <h3>{{pokemon.nombre | titlecase}}</h3>
+      <span>#{{pokemon.num_pokemon}}</span>
+    </div>
+    <div>
+      <span class="type-pokemon">{{pokemon.tipo_pokemon | titlecase}}</span>
+      <span>Generación: {{pokemon.num_generacion}}</span>
+    </div>
+  </div>
+  <div *ngIf="pokemon" id="image">
+    <img
+      src="{{pokemon.icono_pokemon}}"
+      alt="pokemon"
+    />
+  </div>
+</div>

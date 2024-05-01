@@ -1,0 +1,5 @@
+<div (click)="eventIdPokemon.emit(pokemon?.id)">
+  <img src="{{pokemon?.icono_pokemon}}" alt="">
+  <h3>{{pokemon?.nombre | titlecase}}</h3>
+  <span>#{{pokemon?.num_pokemon}}</span>
+</div>

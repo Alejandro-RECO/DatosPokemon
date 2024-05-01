@@ -1,0 +1,15 @@
+<div id="searchContainer" style="position: sticky; top: 0;">
+  <input
+    autocomplete="off"
+    type="search"
+    placeholder="{{ placeholderContent[searchType] }}"
+    [(ngModel)]="namePokemon"
+    (input)="searchPokemonByStartName()"
+  />
+  <select [(ngModel)]="searchType">
+    <option value="nombre">Nombre</option>
+    <option value="num_pokemon">Número</option>
+    <option value="num_generacion">Número region</option>
+    <option value="tipo_pokemon">Tipo</option>
+  </select>
+</div>

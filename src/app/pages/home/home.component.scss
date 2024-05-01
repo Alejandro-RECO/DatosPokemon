@@ -1,0 +1,20 @@
+#container{
+  height: 100vh;
+  display: grid;
+  grid-template-rows: .2fr 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+#containerFirst{
+  position: sticky;
+  top: 0;
+}
+#containerCards{
+  overflow: auto;
+  height: calc(100vh - (28.8px + 300.45px));
+}
+app-form{
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+}

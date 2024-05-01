@@ -1,0 +1,42 @@
+<div id="container" [ngClass]="{active: isOpenForm}">
+  <button (click)="toggleForm()">+</button>
+  <div>
+    <input type="text" id="nombre" [(ngModel)]="newPokemon.nombre" required />
+
+    <input
+      type="text"
+      id="num_pokemon"
+      [(ngModel)]="newPokemon.num_pokemon"
+      required
+    />
+
+    <input
+      type="text"
+      id="num_generacion"
+      [(ngModel)]="newPokemon.num_generacion"
+      required
+    />
+    <input
+      type="color"
+      id="color_principal"
+      [(ngModel)]="newPokemon.color_principal"
+      required
+    />
+
+    <input
+      type="text"
+      id="icono_pokemon"
+      [(ngModel)]="newPokemon.icono_pokemon"
+      required
+    />
+
+    <input
+      type="text"
+      id="tipo_pokemon"
+      [(ngModel)]="newPokemon.tipo_pokemon"
+      required
+    />
+
+    <button (click)="addPokemon()">Agregar Pokemon</button>
+  </div>
+</div>
