@@ -1,18 +1,23 @@
 export interface Pokemon {
   id?:string;
-  nombre: string;
-  color_principal: string;
+  name: string;
   num_pokemon: string;
-  num_generacion: string;
-  icono_pokemon: string;
-  tipo_pokemon: string;
+  main_color: string;
+  generation_num: string;
+  icon: string;
+  type: string;
   [key: string]: any;
 }
 
 export interface placeholderContent{
-  nombre: string;
+  name: string;
   num_pokemon: string;
-  num_generacion: string;
-  tipo_pokemon: string;
+  generation_num: string;
+  type: string;
   [key: string]: any;
 }
+export interface PokemonSearch {
+  name: string;
+  searchType: string;
+}
+

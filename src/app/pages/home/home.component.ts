@@ -10,36 +10,31 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class HomeComponent {
   //Variables
-  pokemons = this.pokemonService.pokemonState;
-  receivedIdPokemon: string = '';
-  pokemonSelected = new BehaviorSubject<Pokemon | null>(null);
-  fielValue: string = 'nombre';
-  namePokemon: string = '';
+  public pokemons = this.pokemonService.pokemonState;
+  public receivedIdPokemon: string = '';
+  public pokemonSelected = new BehaviorSubject<Pokemon | null>(null);
+  public searchType: string = 'nombre';
+  public namePokemon: string = '';
 
   constructor(private pokemonService: PokemonService) {
-    this.pokemonService.initData().subscribe()
+    this.pokemonService.initData().subscribe();
   }
 
-  //Metodos del compomente
-
-  //Funciones publicas
-  receiveIdPokemon(id: string) {
-    this.pokemonService.getPokemonById(
-      id
-    ).subscribe(pokemon =>{
-      if(pokemon){
-        this.pokemonSelected.next(pokemon)
+  public receiveIdPokemon(id: string) {
+    this.pokemonService.getPokemonById(id).subscribe((pokemon) => {
+      if (pokemon) {
+        this.pokemonSelected.next(pokemon);
       }
     });
   }
 
   public recivedSearchParams(searchParams: {
-    nombre: string;
+    name: string;
     searchType: string;
   }) {
     this.pokemonService
       .getPokemonByStartName(
-        searchParams.nombre.toLowerCase(),
+        searchParams.name.toLowerCase(),
         searchParams.searchType.toLowerCase()
       )
       .subscribe((pokemons) => {
@@ -48,6 +43,4 @@ export class HomeComponent {
         }
       });
   }
-
-  //Funciones Privadas
 }

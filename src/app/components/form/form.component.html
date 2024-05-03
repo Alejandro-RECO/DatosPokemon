@@ -5,33 +5,41 @@
 ></div>
 
 <section id="container" [ngClass]="{ active: isOpenForm }">
-  <button id="toggleButton" (click)="toggleForm()">+ AGREGAR</button>
+  <button id="toggleButton" (click)="toggleForm()">
+    {{ STATIC_PARAMS_FORM.button_main }}
+  </button>
   <form id="containerForm" #myForm="ngForm" (ngSubmit)="addPokemon()">
     <div>
-      <label for="nombre" class="text_sm">Nombre del pokemon</label>
+      <label for="nombre" class="text_sm">{{
+        STATIC_PARAMS_FORM.labels.label_name.title
+      }}</label>
       <input
         class="input"
         type="text"
-        id="nombre"
-        [(ngModel)]="newPokemon.nombre"
-        placeholder="Pikachu..."
+        id="name"
+        [(ngModel)]="newPokemon.name"
+        placeholder="{{ STATIC_PARAMS_FORM.labels.label_name.placeholder }}"
         required
-        name="nombre"
-        #nombre="ngModel"
+        name="name"
+        #name="ngModel"
       />
-      <div *ngIf="nombre.invalid && nombre.touched" class="error_message text_sm">
-        El nombre del pokemon es requerido.
+      <div *ngIf="name.invalid && name.touched" class="error_message text_sm">
+        {{ STATIC_PARAMS_FORM.labels.label_name.message_error }}
       </div>
     </div>
 
     <div>
-      <label for="num_pokemon" class="text_sm">Número del pokemon</label>
+      <label for="num_pokemon" class="text_sm">{{
+        STATIC_PARAMS_FORM.labels.label_num_pokemon.title
+      }}</label>
       <input
         class="input"
         type="text"
         id="num_pokemon"
         [(ngModel)]="newPokemon.num_pokemon"
-        placeholder="001..."
+        placeholder="{{
+          STATIC_PARAMS_FORM.labels.label_num_pokemon.placeholder
+        }}"
         required
         name="num_pokemon"
         #num_pokemon="ngModel"
@@ -40,87 +48,91 @@
         *ngIf="num_pokemon.invalid && num_pokemon.touched"
         class="error_message text_sm"
       >
-        El número del pokemon es requerido.
+        {{ STATIC_PARAMS_FORM.labels.label_num_pokemon.message_error }}
       </div>
     </div>
     <div>
-      <label for="num_generacion" class="text_sm">Número de generación</label>
+      <label for="generation_num" class="text_sm">{{
+        STATIC_PARAMS_FORM.labels.label_generation_num.title
+      }}</label>
       <input
         class="input"
         type="text"
         id="num_generacion"
-        [(ngModel)]="newPokemon.num_generacion"
-        placeholder="1..."
+        [(ngModel)]="newPokemon.generation_num"
+        placeholder="{{
+          STATIC_PARAMS_FORM.labels.label_generation_num.placeholder
+        }}"
         required
-        name="num_generacion"
-        #num_generacion="ngModel"
+        name="generation_num"
+        #generation_num="ngModel"
       />
       <div
-        *ngIf="num_generacion.invalid && num_generacion.touched"
+        *ngIf="generation_num.invalid && generation_num.touched"
         class="error_message text_sm"
       >
-        El número de generación es requerido.
+        {{ STATIC_PARAMS_FORM.labels.label_generation_num.message_error }}
       </div>
     </div>
     <div class="input_color">
-      <label for="color_principal" class="text_sm">Color principal</label>
+      <label for="main_color" class="text_sm">{{
+        STATIC_PARAMS_FORM.labels.label_main_color.title
+      }}</label>
       <input
         class="input"
         type="color"
-        id="color_principal"
-        [(ngModel)]="newPokemon.color_principal"
+        id="main_color"
+        [(ngModel)]="newPokemon.main_color"
         required
-        name="color_principal"
-        #color_principal="ngModel"
+        name="main_color"
+        #main_color="ngModel"
       />
       <div
-        *ngIf="color_principal.invalid && color_principal.touched"
+        *ngIf="main_color.invalid && main_color.touched"
         class="error_message text_sm"
       >
-        El color principal es requerido.
+        {{ STATIC_PARAMS_FORM.labels.label_main_color.message_error }}
       </div>
     </div>
     <div>
-      <label for="icono_pokemon" class="text_sm">Icono del pokemon</label>
+      <label for="icon" class="text_sm">{{
+        STATIC_PARAMS_FORM.labels.label_icon.title
+      }}</label>
       <input
         class="input"
         type="text"
-        id="icono_pokemon"
-        [(ngModel)]="newPokemon.icono_pokemon"
-        placeholder="https://..."
+        id="icon"
+        [(ngModel)]="newPokemon.icon"
+        placeholder="{{ STATIC_PARAMS_FORM.labels.label_icon.placeholder }}."
         required
-        name="icono_pokemon"
-        #icono_pokemon="ngModel"
+        name="icon"
+        #icon="ngModel"
       />
-      <div
-        *ngIf="icono_pokemon.invalid && icono_pokemon.touched"
-        class="error_message text_sm"
-      >
-        El icono del pokemon es requerido.
+      <div *ngIf="icon.invalid && icon.touched" class="error_message text_sm">
+        {{ STATIC_PARAMS_FORM.labels.label_icon.message_error }}
       </div>
     </div>
     <div>
-      <label for="tipo_pokemon" class="text_sm">Tipo del pokemon</label>
+      <label for="type" class="text_sm">{{
+        STATIC_PARAMS_FORM.labels.label_type.title
+      }}</label>
       <input
         class="input"
         type="text"
-        id="tipo_pokemon"
-        [(ngModel)]="newPokemon.tipo_pokemon"
-        placeholder="Eléctrico..."
+        id="type"
+        [(ngModel)]="newPokemon.type"
+        placeholder="{{ STATIC_PARAMS_FORM.labels.label_type.placeholder }}."
         required
-        name="tipo_pokemon"
-        #tipo_pokemon="ngModel"
+        name="type"
+        #type="ngModel"
       />
-      <div
-        *ngIf="tipo_pokemon.invalid && tipo_pokemon.touched"
-        class="error_message text_sm"
-      >
-        El tipo del pokemon es requerido.
+      <div *ngIf="type.invalid && type.touched" class="error_message text_sm">
+        {{ STATIC_PARAMS_FORM.labels.label_type.message_error }}
       </div>
     </div>
 
     <button class="button" type="submit" [disabled]="myForm.invalid">
-      Agregar Pokemon
+      {{ STATIC_PARAMS_FORM.secondary_button }}
     </button>
   </form>
 </section>

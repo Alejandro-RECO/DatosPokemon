@@ -9,39 +9,7 @@ export class PokemonService {
   public pokemonState = new BehaviorSubject<Pokemon[] | null>(null);
 
   constructor() {
-    const pokemon2: Pokemon = {
-      nombre: 'Charmander',
-      num_pokemon: '0004',
-      color_principal: '#ffaa3b',
-      num_generacion: '1',
-      icono_pokemon:
-        'https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png',
-      tipo_pokemon: 'fuego',
-    };
-    const pokemon3: Pokemon = {
-      nombre: 'Bulbasaur',
-      num_pokemon: '0001 ',
-      color_principal: '#7ccf50',
-      num_generacion: '1',
-      icono_pokemon:
-        'https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png',
-      tipo_pokemon: 'planta',
-    };
-    const pokemon4: Pokemon = {
-      nombre: 'Squirtle',
-      num_pokemon: '0007 ',
-      color_principal: '#4bc1e4',
-      num_generacion: '1',
-      icono_pokemon:
-        'https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png',
-      tipo_pokemon: 'agua',
-    };
-
-    if (localStorage.getItem('pokemons') === null) {
-      this.savePokemon(pokemon2);
-      this.savePokemon(pokemon3);
-      this.savePokemon(pokemon4);
-    }
+    this.fillWhenEmpty();
   }
 
   public initData(): Observable<Pokemon[]> {
@@ -52,33 +20,29 @@ export class PokemonService {
     );
   }
 
-  //Guardar un pokemon
-  savePokemon(pokemon: Pokemon): void {
-    this.getPokemons().subscribe((pokemons) => {
+  public savePokemon(pokemon: Pokemon): Observable<boolean> {
+    try {
       if (!pokemon.id) {
-        //create a random id
-        const id = (Math.random() * 100).toString();
-
+        const id = this.getRandomId();
         pokemon.id = id;
       }
       this.pokemonState.next([...(this.pokemonState?.value || []), pokemon]);
-      localStorage.setItem(
-        'pokemons',
-        JSON.stringify(this.pokemonState.value || [])
-      );
-    });
+      this.setItemsLocalStorage();
+      return of(true);
+    } catch (e) {
+      console.log('Error', e);
+      return of(false);
+    }
   }
 
-  //Obtener todos los pokemones
-  getPokemons(): Observable<Pokemon[]> {
+  public getPokemons(): Observable<Pokemon[]> {
     const pokemonsString = localStorage.getItem('pokemons');
 
     const pokemonValues = pokemonsString ? JSON.parse(pokemonsString) : [];
     return of(pokemonValues);
   }
 
-  //Obtener un pokemon por nombre
-  getPokemonById(id: string): Observable<Pokemon | null> {
+  public getPokemonById(id: string): Observable<Pokemon | null> {
     return this.pokemonState.pipe(
       map((pokemons) => {
         return (
@@ -89,8 +53,7 @@ export class PokemonService {
       })
     );
   }
-  //Obtenr por inicio nombre
-  getPokemonByStartName(
+  public getPokemonByStartName(
     name: string,
     field: string
   ): Observable<Pokemon[] | null> {
@@ -105,5 +68,54 @@ export class PokemonService {
         return result;
       })
     );
+  }
+
+  private fillWhenEmpty(): void {
+    const pokemonOne: Pokemon = {
+      id: this.getRandomId(),
+      name: 'Charmander',
+      num_pokemon: '0004',
+      main_color: '#ffaa3b',
+      generation_num: '1',
+      icon: 'https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png',
+      type: 'fuego',
+    };
+    const pokemonTwo: Pokemon = {
+      id: this.getRandomId(),
+      name: 'Bulbasaur',
+      num_pokemon: '0001 ',
+      main_color: '#7ccf50',
+      generation_num: '1',
+      icon: 'https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png',
+      type: 'planta',
+    };
+    const pokemonThree: Pokemon = {
+      id: this.getRandomId(),
+      name: 'Squirtle',
+      num_pokemon: '0007 ',
+      main_color: '#4bc1e4',
+      generation_num: '1',
+      icon: 'https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png',
+      type: 'agua',
+    };
+
+    if (localStorage.getItem('pokemons') === null) {
+      this.pokemonState.next([
+        ...(this.pokemonState?.value || []),
+        pokemonOne,
+        pokemonTwo,
+        pokemonThree,
+      ]);
+      this.setItemsLocalStorage();
+    }
+  }
+  private setItemsLocalStorage() {
+    localStorage.setItem(
+      'pokemons',
+      JSON.stringify(this.pokemonState.value || [])
+    );
+  }
+  private getRandomId(): string {
+    return (Math.random() * 100).toString();
   }
 }

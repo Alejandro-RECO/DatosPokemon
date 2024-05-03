@@ -1,5 +1,5 @@
-<div (click)="eventIdPokemon.emit(pokemon?.id)" [ngStyle]="{ 'background-color': color }">
-  <img src="{{pokemon?.icono_pokemon}}" alt="">
-  <h3>{{pokemon?.nombre | titlecase}}</h3>
+<div (click)="eventIdPokemon.emit(pokemon?.id)" [ngStyle]="{ 'background-color': MAIN_COLOR }">
+  <img src="{{pokemon?.icon}}" alt="">
+  <h3>{{pokemon?.name | titlecase}}</h3>
   <span>#{{pokemon?.num_pokemon}}</span>
 </div>

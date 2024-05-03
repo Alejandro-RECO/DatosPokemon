@@ -9,46 +9,45 @@
   height: 70%;
   margin-top: 10px;
   box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.75);
+}
 
-  #data {
-    padding: 0 40px;
+#bacgroundContainer #data {
+  padding: 0 40px;
+}
 
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: center;
-      font-size: medium;
-      font-weight: bolder;
+#bacgroundContainer #data div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  font-size: medium;
+  font-weight: bolder;
+  word-wrap: break-word;
+}
 
-      h3 {
-        font-size: 2.8rem;
-        font-weight: bold;
-        color: #fff;
+#bacgroundContainer #data div h3 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #fff;
+}
 
+#bacgroundContainer #data .type-pokemon {
+  padding: 5px 10px;
+  border-radius: 1rem;
+  background-color: #ffffff1b;
+  word-wrap: break-word;
+}
 
-      }
+#bacgroundContainer #image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .type-pokemon {
-        padding: 5px 10px;
-        border-radius: 1rem;
-        background-color: #ffffff1b;
-      }
-    }
-  }
-
-  #image {
-    // max-height: 270px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      height: 220px;
-      padding: 0;
-      filter: drop-shadow(0 0 9px rgba(0, 0, 0, 0.096));
-    }
-  }
+#bacgroundContainer #image img {
+  height: 220px;
+  padding: 0;
+  filter: drop-shadow(0 0 9px rgba(0, 0, 0, 0.096));
 }
 
 #predetermined {
@@ -60,18 +59,18 @@
   height: 100px;
   text-transform: uppercase;
   font-size: x-large;
+}
 
-  img {
-    position: absolute;
-    margin: 0;
-    width: 90px;
-    height: 90px;
-    margin-right: 10px;
-    top: 10%;
-    right: 5%;
-    image-rendering: pixelated;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.444));
-  }
+#predetermined img {
+  position: absolute;
+  margin: 0;
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+  top: 10%;
+  right: 5%;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.444));
 }
 
 @media (min-width: 940px) {
@@ -80,15 +79,12 @@
     box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.75);
   }
 
-  #image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      scale: 1;
-      padding-bottom: 10px;
-    }
+  #bacgroundContainer #image img {
+    scale: 1;
+    padding-bottom: 10px;
   }
 
+  h3 {
+    font-size: 2.8rem;
+  }
 }

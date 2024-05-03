@@ -7,9 +7,9 @@
     (input)="searchPokemonByStartName()"
   />
   <select [(ngModel)]="searchType">
-    <option value="nombre">Nombre</option>
-    <option value="num_pokemon">Número</option>
-    <option value="num_generacion">Número region</option>
-    <option value="tipo_pokemon">Tipo</option>
+    <option value="name">{{STATIC_PARAMS_SELECT.name}}</option>
+    <option value="num_pokemon">{{STATIC_PARAMS_SELECT.num_pokemon}}</option>
+    <option value="generation_num">{{STATIC_PARAMS_SELECT.generation_num}}</option>
+    <option value="type">{{STATIC_PARAMS_SELECT.type}}</option>
   </select>
 </div>

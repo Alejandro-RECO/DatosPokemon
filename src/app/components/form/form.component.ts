@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Pokemon } from 'src/app/interface/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { STATIC_PARAMS } from 'src/assets/resources/static';
 
 @Component({
   selector: 'app-form',
@@ -11,15 +12,17 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class FormComponent {
   @ViewChild('myForm') myForm!: NgForm;
 
+  public STATIC_PARAMS_FORM = STATIC_PARAMS.form;
+
   public formSubmitted = false;
   public isOpenForm: boolean = false;
   private initData: Pokemon = {
-    nombre: '',
+    name: '',
     num_pokemon: '',
-    color_principal: '#f6bd20',
-    num_generacion: '',
-    icono_pokemon: '',
-    tipo_pokemon: '',
+    main_color: this.STATIC_PARAMS_FORM.color,
+    generation_num: '',
+    icon: '',
+    type: '',
   };
 
   public newPokemon: Pokemon = { ...this.initData };
@@ -29,11 +32,15 @@ export class FormComponent {
   public addPokemon() {
     if (this.myForm.invalid) return;
 
-    this.pokemonService.savePokemon(this.newPokemon);
-    this.newPokemon = { ...this.initData };
-
-    this.myForm.resetForm();
-    this.toggleForm();
+    this.pokemonService.savePokemon(this.newPokemon).subscribe((response) => {
+      if (response) {
+        this.newPokemon = { ...this.initData };
+        this.myForm.resetForm();
+        this.toggleForm();
+      } else {
+        alert('Error save pokemon');
+      }
+    });
   }
 
   public toggleForm() {
