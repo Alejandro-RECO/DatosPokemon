@@ -13,8 +13,7 @@ export class FormComponent {
 
   public formSubmitted = false;
   public isOpenForm: boolean = false;
-
-  public newPokemon: Pokemon = {
+  private initData: Pokemon = {
     nombre: '',
     num_pokemon: '',
     color_principal: '#f6bd20',
@@ -23,20 +22,15 @@ export class FormComponent {
     tipo_pokemon: '',
   };
 
+  public newPokemon: Pokemon = { ...this.initData };
+
   constructor(private pokemonService: PokemonService) {}
 
   public addPokemon() {
     if (this.myForm.invalid) return;
 
     this.pokemonService.savePokemon(this.newPokemon);
-    this.newPokemon = {
-      nombre: '',
-      num_pokemon: '',
-      color_principal: '#f6bd20',
-      num_generacion: '',
-      icono_pokemon: '',
-      tipo_pokemon: '',
-    };
+    this.newPokemon = { ...this.initData };
 
     this.myForm.resetForm();
     this.toggleForm();
@@ -46,4 +40,3 @@ export class FormComponent {
     this.isOpenForm = !this.isOpenForm;
   }
 }
-

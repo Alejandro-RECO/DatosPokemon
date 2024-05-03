@@ -1,57 +1,31 @@
-# Proyecto Angular - Almacenamiento de Pokemons
+# Proyecto Angular - Pokedex
 
-Este es un proyecto en Angular que consiste en un sistema para almacenar pokemons y generar una aplicación móvil. La aplicación permite buscar pokemons por nombre, número de pokemon, tipo de pokemon y tipo.
+Este proyecto es una aplicación web desarrollada en Angular que permite almacenar y buscar información sobre pokemons. La aplicación está diseñada como una aplicación móvil first, lo que significa que se adapta y se ve bien en dispositivos móviles.
 
-## Almacenamiento de Datos
+## Características principales
 
-En este proyecto, he tomado la decisión de almacenar los datos en el local storage del navegador. Esto me permite guardar y recuperar los datos de manera sencilla sin necesidad de utilizar una base de datos.
+- Búsqueda automática de pokemons mientras se escribe en el campo de búsqueda.
+- Búsqueda de pokemons por nombre, número, generación y tipo.
+- Almacenamiento de datos en el local storage del navegador.
 
-## Maquetación
-
-Antes de iniciar el desarrollo, realicé la maquetación del proyecto teniendo en cuenta el requisito de ser una aplicación móvil first. Esto significa que el diseño está optimizado para dispositivos móviles, pero también es responsive y se adapta a pantallas de mayor tamaño.
-
-## Desarrollo en Angular
-
-El proyecto fue inicializado en Angular 15 y se utilizaron varios conceptos y características de este framework.
-
-### Servicio de Datos
-
-Para manejar la lógica de almacenamiento y manipulación de los pokemons, creé un archivo service donde definí todos los métodos necesarios. Estos métodos son síncronos y se encargan de insertar y seleccionar pokemons en el local storage.
-
-### Codificación de Vistas
-
-Una vez que los métodos de datos estaban funcionales, procedí a la codificación de las vistas de la aplicación. Estas vistas están diseñadas de manera responsive y se adaptan a dispositivos móviles. Se utilizó Angular para la generación dinámica de contenido y la interacción con los datos almacenados.
-
-### Uso de Observables y Suscripciones
-
-Para asegurar la sincronía y evitar conflictos en el futuro, decidí implementar métodos rxjs en mi proyecto. Estos métodos hacen que las operaciones dependan de Observables y se suscriban a ellos. Esta implementación permite una mejor integración si se desea consumir una API en el futuro.
-
-### Estilos y Formulario
-
-Una vez que las funcionalidades principales estaban implementadas, me enfoqué en los estilos de la aplicación para pantallas de escritorio. Además, agregué un formulario para agregar nuevos pokemons al sistema. Estas dos tareas fueron completadas con éxito.
-
-### Refactorización y Estándares
-
-Finalmente, realicé una refactorización del código para asegurar que cumpla con los estándares y buenas prácticas. También realicé ajustes adicionales en los estilos para mejorar la apariencia de la aplicación.
-
-## Implementación de una Base de Datos
-
-En este proyecto, no se implementó un gestor de bases de datos. Sin embargo, si se desea utilizar una base de datos en el futuro, se deben seguir las siguientes instrucciones:
-
-1. Descargar e instalar el gestor de bases de datos de tu elección.
-2. Crear una nueva base de datos para el proyecto.
-3. Actualizar la configuración de la conexión a la base de datos en el archivo de configuración del proyecto.
-4. Ejecutar los scripts de creación de tablas y/o importar los datos iniciales necesarios.
-5. Actualizar el código del servicio de datos para utilizar la nueva conexión a la base de datos.
-
-## Instrucciones de Ejecución
-
-Sigue estos pasos para ejecutar el proyecto:
+## Configuración del proyecto
 
 1. Clona el repositorio en tu máquina local.
-2. Abre una terminal y navega hasta la carpeta del proyecto.
-3. Ejecuta el comando `npm install` para instalar las dependencias del proyecto.
-4. Ejecuta el comando `ng serve` para iniciar el servidor de desarrollo.
-5. Abre tu navegador web y ve a `http://localhost:4200` para ver la aplicación en funcionamiento.
+2. Asegúrate de tener instalada la última versión de Node.js y Angular CLI.
+3. Abre una terminal en la carpeta raíz del proyecto y ejecuta el siguiente comando para instalar las dependencias:`npm install`
 
-¡Disfruta de la aplicación para almacenar y buscar pokemons en Angular!
+4. Una vez finalizada la instalación, ejecuta el siguiente comando para iniciar la aplicación:`ng serve`
+
+5. Abre tu navegador y accede a `http://localhost:4200` para ver la aplicación en funcionamiento.
+
+## Uso de la aplicación
+
+La aplicación consta de las siguientes secciones:
+
+### Búsqueda de pokemons
+
+En la página principal de la aplicación, encontrarás un campo de búsqueda donde puedes ingresar el nombre, número, tipo de pokemon o tipo que deseas buscar. A medida que vas escribiendo, la aplicación realizará una búsqueda automática y mostrará los resultados correspondientes. Además, encontrarás una lista desplegable con opciones predefinidas para facilitar la búsqueda.
+
+### Agregar pokemons
+
+En la página de agregar pokemon, encontrarás un formulario donde puedes ingresar los datos del pokemon que deseas agregar, como el nombre, número, tipo y tipo de pokemon. Al hacer clic en el botón de agregar, el pokemon se almacenará en la base de datos local.
