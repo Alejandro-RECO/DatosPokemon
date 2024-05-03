@@ -4,17 +4,45 @@
   grid-template-rows: .2fr 1fr 1fr;
   position: relative;
   overflow: hidden;
+  transition: .5s ease-in-out;
 }
 #containerFirst{
   position: sticky;
   top: 0;
+  transition: .5s ease-in-out;
+
 }
 #containerCards{
   overflow: auto;
-  height: calc(100vh - (28.8px + 300.45px));
+  height: calc(100vh - 28.8px);
+  transition: .5s ease-in-out;
+
 }
 app-form{
   position: absolute;
   z-index: 3;
   bottom: 0;
+  transition: .5s ease-in-out;
+
+}
+//Los estilos anteriores estan en firt mobile, luego se agregan los estilos para desktop
+@media (min-width: 940px){
+  #container{
+    display: grid;
+    grid-template-rows:.2fr 1fr;
+    grid-template-columns:3fr 1fr;
+  }
+  #containerFirst{
+    padding: 60px;
+
+    div{
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+  }
+  #containerCards{
+    height: 100vh;
+  }
 }

@@ -1,42 +1,126 @@
-<div id="container" [ngClass]="{active: isOpenForm}">
-  <button (click)="toggleForm()">+</button>
-  <div>
-    <input type="text" id="nombre" [(ngModel)]="newPokemon.nombre" required />
+<div
+  id="backdrop"
+  [ngClass]="{ active: !isOpenForm }"
+  (click)="toggleForm()"
+></div>
 
-    <input
-      type="text"
-      id="num_pokemon"
-      [(ngModel)]="newPokemon.num_pokemon"
-      required
-    />
+<section id="container" [ngClass]="{ active: isOpenForm }">
+  <button id="toggleButton" (click)="toggleForm()">+ AGREGAR</button>
+  <form id="containerForm" #myForm="ngForm" (ngSubmit)="addPokemon()">
+    <div>
+      <label for="nombre" class="text_sm">Nombre del pokemon</label>
+      <input
+        class="input"
+        type="text"
+        id="nombre"
+        [(ngModel)]="newPokemon.nombre"
+        placeholder="Pikachu..."
+        required
+        name="nombre"
+        #nombre="ngModel"
+      />
+      <div *ngIf="nombre.invalid && nombre.touched" class="error_message text_sm">
+        El nombre del pokemon es requerido.
+      </div>
+    </div>
 
-    <input
-      type="text"
-      id="num_generacion"
-      [(ngModel)]="newPokemon.num_generacion"
-      required
-    />
-    <input
-      type="color"
-      id="color_principal"
-      [(ngModel)]="newPokemon.color_principal"
-      required
-    />
+    <div>
+      <label for="num_pokemon" class="text_sm">Número del pokemon</label>
+      <input
+        class="input"
+        type="text"
+        id="num_pokemon"
+        [(ngModel)]="newPokemon.num_pokemon"
+        placeholder="001..."
+        required
+        name="num_pokemon"
+        #num_pokemon="ngModel"
+      />
+      <div
+        *ngIf="num_pokemon.invalid && num_pokemon.touched"
+        class="error_message text_sm"
+      >
+        El número del pokemon es requerido.
+      </div>
+    </div>
+    <div>
+      <label for="num_generacion" class="text_sm">Número de generación</label>
+      <input
+        class="input"
+        type="text"
+        id="num_generacion"
+        [(ngModel)]="newPokemon.num_generacion"
+        placeholder="1..."
+        required
+        name="num_generacion"
+        #num_generacion="ngModel"
+      />
+      <div
+        *ngIf="num_generacion.invalid && num_generacion.touched"
+        class="error_message text_sm"
+      >
+        El número de generación es requerido.
+      </div>
+    </div>
+    <div class="input_color">
+      <label for="color_principal" class="text_sm">Color principal</label>
+      <input
+        class="input"
+        type="color"
+        id="color_principal"
+        [(ngModel)]="newPokemon.color_principal"
+        required
+        name="color_principal"
+        #color_principal="ngModel"
+      />
+      <div
+        *ngIf="color_principal.invalid && color_principal.touched"
+        class="error_message text_sm"
+      >
+        El color principal es requerido.
+      </div>
+    </div>
+    <div>
+      <label for="icono_pokemon" class="text_sm">Icono del pokemon</label>
+      <input
+        class="input"
+        type="text"
+        id="icono_pokemon"
+        [(ngModel)]="newPokemon.icono_pokemon"
+        placeholder="https://..."
+        required
+        name="icono_pokemon"
+        #icono_pokemon="ngModel"
+      />
+      <div
+        *ngIf="icono_pokemon.invalid && icono_pokemon.touched"
+        class="error_message text_sm"
+      >
+        El icono del pokemon es requerido.
+      </div>
+    </div>
+    <div>
+      <label for="tipo_pokemon" class="text_sm">Tipo del pokemon</label>
+      <input
+        class="input"
+        type="text"
+        id="tipo_pokemon"
+        [(ngModel)]="newPokemon.tipo_pokemon"
+        placeholder="Eléctrico..."
+        required
+        name="tipo_pokemon"
+        #tipo_pokemon="ngModel"
+      />
+      <div
+        *ngIf="tipo_pokemon.invalid && tipo_pokemon.touched"
+        class="error_message text_sm"
+      >
+        El tipo del pokemon es requerido.
+      </div>
+    </div>
 
-    <input
-      type="text"
-      id="icono_pokemon"
-      [(ngModel)]="newPokemon.icono_pokemon"
-      required
-    />
-
-    <input
-      type="text"
-      id="tipo_pokemon"
-      [(ngModel)]="newPokemon.tipo_pokemon"
-      required
-    />
-
-    <button (click)="addPokemon()">Agregar Pokemon</button>
-  </div>
-</div>
+    <button class="button" type="submit" [disabled]="myForm.invalid">
+      Agregar Pokemon
+    </button>
+  </form>
+</section>

@@ -13,11 +13,12 @@
 
   input {
     height: 1.8rem;
-    border-radius: .7rem;
+    border-radius: .5rem;
     padding: 0 10px;
     font-size: 16px;
     border: 1px solid transparent;
     box-shadow: 0px -1px 50px -7px rgba(46,46,46,0.75) inset;
+    transition: .5s ease-in-out;
 
     &:focus {
       outline: none;
@@ -28,7 +29,7 @@
   select {
     border: 1px solid transparent;
     height: 1.8rem;
-    border-radius: .7rem;
+    border-radius: .5rem;
     color: #8d8d8d;
     box-shadow: 0px -1px 50px -7px rgba(46,46,46,0.75) inset;
     padding: 3px;
@@ -39,21 +40,11 @@
       border: .1rem solid #fff;
     }
   }
-  button{
-    box-shadow: 0px -1px 50px -7px rgba(46,46,46,0.75) inset;
-    border: none;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
-    color: #8d8d8d;
-    background: #161616;
-    text-align: center;
-    transition: .2s ease-in-out;
-     &:hover {
-      background: #979797;
-      color: #161616;
-      scale: 1.1;
-    }
+}
 
+@media (min-width: 910px) {
+  input{
+    width: 50%;
   }
+
 }

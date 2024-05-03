@@ -10,27 +10,36 @@ export class PokemonService {
   public pokemonState = new BehaviorSubject<Pokemon[] | null>(null);
 
   constructor(){
-      const pokemon1: Pokemon = {
-        nombre: 'picachu',
-        num_pokemon: '25',
-        color_principal: '#f6bd20',
-        num_generacion: '1',
-        icono_pokemon:
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-        tipo_pokemon: 'electrico',
-      };
-      const pokemon2: Pokemon = {
-        nombre: 'Bulbasure',
-        num_pokemon: '25',
-        color_principal: '#70ceec',
-        num_generacion: '3',
-        icono_pokemon:
-          'https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png',
-        tipo_pokemon: 'electrico',
-      };
 
-      this.savePokemon(pokemon1)
+      const pokemon2: Pokemon = {
+        nombre: 'Charmander',
+        num_pokemon: '0004',
+        color_principal: '#ffaa3b',
+        num_generacion: '1',
+        icono_pokemon:'https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png',
+        tipo_pokemon: 'fuego',
+      };
+      const pokemon3: Pokemon = {
+        nombre: 'Bulbasaur',
+        num_pokemon: '0001 ',
+        color_principal: '#7ccf50',
+        num_generacion: '1',
+        icono_pokemon:'https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png',
+        tipo_pokemon: 'planta',
+      };
+      const pokemon4: Pokemon = {
+        nombre: 'Squirtle',
+        num_pokemon: '0007 ',
+        color_principal: '#4bc1e4',
+        num_generacion: '1',
+        icono_pokemon:'https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png',
+        tipo_pokemon: 'agua',
+      };
       this.savePokemon(pokemon2)
+      this.savePokemon(pokemon3)
+      this.savePokemon(pokemon4)
+
+
   }
 
   public initData(): Observable<Pokemon[]> {
